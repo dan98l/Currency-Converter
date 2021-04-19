@@ -48,9 +48,9 @@ class ConverterScreenViewModel {
         
         switch currency {
         case .base:
-            completion("\(Double(truncating: base) / Double(truncating: value))".substring(to: 6))
+            completion("\(Double(truncating: base) / Double(truncating: quoted) *  Double(truncating: value))".substring(to: 6))
         case .quoted:
-            completion("\(Double(truncating: quoted) / Double(truncating: value))".substring(to: 6))
+            completion("\(Double(truncating: quoted) / Double(truncating: base) * Double(truncating: value))".substring(to: 6))
         }
     }
 }
