@@ -44,12 +44,13 @@ class ConverterScreenViewModel {
         guard let quotedСurrency = quotedСurrency.value else { return }
         guard let quoted = formatter.number(from: quotedСurrency) else { return }
         guard let base = formatter.number(from: baseСurrency) else { return }
+        guard let value = formatter.number(from: value) else { return }
         
         switch currency {
         case .base:
-            completion("\(Double(truncating: base) / Double(truncating: quoted))".substring(to: 6))
+            completion("\(Double(truncating: base) / Double(truncating: value))".substring(to: 6))
         case .quoted:
-            completion("\(Double(truncating: quoted) / Double(truncating: base))".substring(to: 6))
+            completion("\(Double(truncating: quoted) / Double(truncating: value))".substring(to: 6))
         }
     }
 }
